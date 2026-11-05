@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天龙影院-天龙影院在线电影观看_高清影视资源与片单推荐</title>
+<meta name="description" content="天龙影院是一个影视资源浏览与片单推荐页面，围绕天龙影院的电影分类、剧集片单、观影指南与常见问题展开，帮助访问者快速了解内容结构并找到想看的影片。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141a2b'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23e8b24a' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23e8b24a'/%3E%3Cpath d='M32 9v7M32 48v7M9 32h7M48 32h7' stroke='%23e8b24a' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#141a2b;
+    --ink-2:#1f2740;
+    --gold:#e8b24a;
+    --gold-soft:#f6dfae;
+    --paper:#f7f5f0;
+    --card:#ffffff;
+    --text:#2b3040;
+    --muted:#6a7186;
+    --line:#e4e0d6;
+    --radius:14px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",system-ui,-apple-system,sans-serif;
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:30;
+    background:rgba(20,26,43,.96);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(232,178,74,.25);
+  }
+  .bar{
+    display:flex;align-items:center;gap:18px;
+    min-height:64px;flex-wrap:wrap;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    color:#fff;font-weight:700;font-size:19px;letter-spacing:.06em;
+    white-space:nowrap;
+  }
+  .logo svg{width:30px;height:30px;flex:0 0 auto;}
+  nav.main{
+    display:flex;gap:4px;flex-wrap:wrap;margin-left:auto;
+  }
+  nav.main a{
+    color:#cfd4e2;font-size:14.5px;padding:8px 12px;border-radius:8px;
+    transition:color .18s,background .18s;
+  }
+  nav.main a:hover,nav.main a:focus-visible{
+    color:var(--gold);background:rgba(232,178,74,.12);outline:none;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(900px 380px at 82% -10%,rgba(232,178,74,.20),transparent 70%),
+      linear-gradient(160deg,#141a2b 0%,#1d2540 62%,#232c4a 100%);
+    color:#fff;
+    padding:56px 0 60px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(232,178,74,.55),transparent);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:.14em;color:var(--gold);
+    border:1px solid rgba(232,178,74,.45);border-radius:999px;
+    padding:4px 12px;margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(30px,4.4vw,46px);
+    line-height:1.22;margin:0 0 16px;font-weight:800;letter-spacing:.02em;
+  }
+  h1 .accent{color:var(--gold);}
+  .hero p.lead{
+    margin:0 0 26px;color:#c8cede;font-size:16px;max-width:33em;
+  }
+  .actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:999px;font-size:15px;font-weight:600;
+    transition:transform .16s,background .18s,color .18s;
+  }
+  .btn-primary{background:var(--gold);color:#1a1206;}
+  .btn-primary:hover{background:var(--gold-soft);transform:translateY(-1px);}
+  .btn-ghost{border:1px solid rgba(255,255,255,.32);color:#e8ecf6;}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+  .btn[aria-disabled="true"]{opacity:.75;}
+  .hero-figure{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(232,178,74,.28);
+    border-radius:var(--radius);
+    padding:18px;
+  }
+  .hero-figure svg{width:100%;height:auto;}
+
+  /* ---------- section shell ---------- */
+  section{padding:56px 0;}
+  section + section{padding-top:0;}
+  .sec-head{margin-bottom:26px;}
+  .sec-head .tag{
+    font-size:12.5px;letter-spacing:.16em;color:#a8842f;font-weight:700;
+  }
+  h2{
+    font-size:clamp(21px,2.6vw,27px);
+    margin:6px 0 8px;font-weight:800;color:var(--ink);letter-spacing:.01em;
+  }
+  .sec-head p{margin:0;color:var(--muted);max-width:46em;font-size:15px;}
+
+  /* ---------- filter ---------- */
+  .filter{
+    display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:14px 16px;margin-bottom:24px;
+  }
+  .filter label{font-size:14px;color:var(--muted);margin-right:2px;}
+  .filter input[type="search"]{
+    flex:1 1 220px;min-width:0;
+    padding:9px 12px;border:1px solid var(--line);border-radius:9px;
+    font-size:14.5px;font-family:inherit;color:var(--text);background:#fbfaf7;
+  }
+  .filter input[type="search"]:focus{outline:2px solid rgba(232,178,74,.6);outline-offset:1px;}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{
+    border:1px solid var(--line);background:#fbfaf7;border-radius:999px;
+    padding:6px 14px;font-size:13.5px;color:#4a5064;cursor:pointer;
+    font-family:inherit;transition:.16s;
+  }
+  .chip:hover{border-color:var(--gold);color:#8a6a1c;}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--gold-soft);border-color:var(--ink);}
+  .filter-note{font-size:13px;color:var(--muted);width:100%;margin:0;}
+
+  /* ---------- cards ---------- */
+  .cards{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .18s,box-shadow .18s,border-color .18s;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(20,26,43,.08);border-color:#d8d2c2;}
+  .card .poster{
+    aspect-ratio:16/9;position:relative;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card .poster span{
+    position:absolute;right:10px;bottom:8px;
+    font-size:11.5px;letter-spacing:.1em;color:rgba(255,255,255,.85);
+  }
+  .card-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .card-body h3{margin:0;font-size:17px;color:var(--ink);font-weight:700;}
+  .meta{font-size:12.5px;color:#9a7c34;letter-spacing:.04em;}
+  .card-body p{margin:0;font-size:14px;color:var(--muted);line-height:1.68;}
+  .card-body .foot{
+    margin-top:auto;padding-top:10px;font-size:13px;color:#5a6076;
+    display:flex;justify-content:space-between;align-items:center;
+    border-top:1px dashed var(--line);
+  }
+  .empty{
+    grid-column:1/-1;text-align:center;color:var(--muted);font-size:14.5px;
+    padding:36px 10px;border:1px dashed var(--line);border-radius:var(--radius);
+    background:#fbfaf7;
+  }
+
+  /* ---------- guide ---------- */
+  .guide{
+    display:grid;grid-template-columns:1fr 1fr;gap:22px;
+  }
+  .panel{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 26px;
+  }
+  .panel h3{margin:0 0 12px;font-size:18px;color:var(--ink);}
+  .steps{list-style:none;margin:0;padding:0;counter-reset:s;}
+  .steps li{
+    counter-increment:s;position:relative;padding-left:40px;margin-bottom:14px;
+    font-size:14.5px;color:#434a5e;
+  }
+  .steps li:last-child{margin-bottom:0;}
+  .steps li::before{
+    content:counter(s);position:absolute;left:0;top:1px;
+    width:26px;height:26px;border-radius:50%;
+    background:var(--ink);color:var(--gold);
+    font-size:13px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .steps li strong{color:var(--ink);}
+  .tips{list-style:none;margin:0;padding:0;}
+  .tips li{
+    font-size:14.5px;color:#434a5e;padding:10px 0 10px 24px;position:relative;
+    border-bottom:1px solid #f0ece2;
+  }
+  .tips li:last-child{border-bottom:0;padding-bottom:0;}
+  .tips li::before{
+    content:"";position:absolute;left:2px;top:19px;
+    width:8px;height:8px;border-radius:2px;background:var(--gold);
+    transform:rotate(45deg);
+  }
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start;
+  }
+  .about-text p{margin:0 0 14px;font-size:15px;color:#3d4356;}
+  .about-text p:last-child{margin-bottom:0;}
+  .facts{
+    background:var(--ink);color:#dfe4f0;border-radius:var(--radius);
+    padding:24px 26px;
+  }
+  .facts h3{margin:0 0 16px;font-size:16px;color:var(--gold);letter-spacing:.06em;}
+  .facts dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:14px;}
+  .facts dt{color:#98a0b8;}
+  .facts dd{margin:0;color:#eef1f8;}
+
+  /* ---------- faq ---------- */
+  .faq{display:grid;gap:12px;}
+  details{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:0 18px;
+  }
+  details[open]{border-color:#dccfa8;background:#fffdf8;}
+  summary{
+    cursor:pointer;list-style:none;padding:15px 0;font-weight:600;
+    font-size:15px;color:var(--ink);display:flex;align-items:center;gap:10px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::before{
+    content:"+";color:#a8842f;font-weight:700;font-size:17px;line-height:1;
+    width:16px;display:inline-block;
+  }
+  details[open] summary::before{content:"–";}
+  details p{margin:0 0 16px;font-size:14.5px;color:#4a5064;padding-left:26px;}
+
+  /* ---------- footer ---------- */
+  footer.site{
+    background:var(--ink);color:#a9b1c6;
+    padding:40px 0 26px;margin-top:20px;
+    border-top:3px solid var(--gold);
+  }
+  .foot-grid{
+    display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px;
+  }
+  footer .brand{
+    color:#fff;font-weight:700;font-size:17px;display:flex;align-items:center;gap:9px;
+    margin-bottom:10px;
+  }
+  footer .brand svg{width:24px;height:24px;}
+  footer p{margin:0;font-size:13.5px;line-height:1.8;}
+  footer h4{margin:0 0 10px;font-size:14px;color:var(--gold-soft);letter-spacing:.05em;}
+  footer ul{list-style:none;margin:0;padding:0;}
+  footer ul li{margin-bottom:8px;font-size:13.5px;}
+  footer a:hover{color:var(--gold);}
+  .copyright{
+    margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);
+    font-size:12.5px;color:#7d859c;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:30px;}
+    .hero-figure{order:-1;max-width:420px;}
+    .cards{grid-template-columns:repeat(2,1fr);}
+    .guide{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    footer .foot-grid > div:first-child{grid-column:1/-1;}
+  }
+  @media (max-width:620px){
+    body{font-size:15.5px;}
+    .bar{min-height:auto;padding:10px 0;gap:10px;}
+    nav.main{margin-left:0;width:100%;}
+    nav.main a{padding:7px 9px;font-size:13.5px;}
+    .hero{padding:36px 0 42px;}
+    .hero-figure{max-width:100%;}
+    .cards{grid-template-columns:1fr;}
+    section{padding:40px 0;}
+    .panel{padding:20px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .copyright{flex-direction:column;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;scroll-behavior:auto !important;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="天龙影院 首页">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1f2740"/>
+        <circle cx="32" cy="32" r="17" fill="none" stroke="#e8b24a" stroke-width="3"/>
+        <circle cx="32" cy="32" r="4" fill="#e8b24a"/>
+        <path d="M32 9v7M32 48v7M9 32h7M48 32h7" stroke="#e8b24a" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      天龙影院
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#picks">精选片单</a>
+      <a href="#guide">观影指南</a>
+      <a href="#about">关于本站</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">影视浏览 · 片单推荐</span>
+        <h1>天龙影院</h1>
+        <p class="lead">天龙影院是一个以电影、剧集与纪录片为主的影视浏览页面。这里按题材与观看场景整理片单，说明每部作品的看点与适看人群，帮助你在众多选择中更快找到今晚想打开的那一部。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#picks">浏览精选片单</a>
+          <a class="btn btn-ghost" href="#guide">查看观影指南</a>
+        </div>
+      </div>
+      <div class="hero-figure" aria-hidden="true">
+        <svg viewBox="0 0 420 300" role="presentation">
+          <defs>
+            <linearGradient id="scr" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2b3559"/>
+              <stop offset="1" stop-color="#171d30"/>
+            </linearGradient>
+          </defs>
+          <rect x="24" y="26" width="372" height="210" rx="10" fill="url(#scr)" stroke="#3a4467"/>
+          <rect x="44" y="46" width="332" height="170" rx="6" fill="#0f1424" stroke="#e8b24a" stroke-opacity=".35"/>
+          <circle cx="210" cy="131" r="34" fill="none" stroke="#e8b24a" stroke-width="2.5"/>
+          <circle cx="210" cy="131" r="5" fill="#e8b24a"/>
+          <path d="M210 78v10M210 174v10M157 131h10M253 131h10" stroke="#e8b24a" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M118 60h44M118 72h28M258 190h44M274 178h28" stroke="#5b6690" stroke-width="3" stroke-linecap="round"/>
+          <rect x="170" y="240" width="80" height="8" rx="4" fill="#2b3559"/>
+          <rect x="140" y="252" width="140" height="6" rx="3" fill="#232b45"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="picks">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">精选片单</span>
+        <h2>按题材与场景挑片</h2>
+        <p>以下片单覆盖院线剧情、剧集长线与纪录片三类常见需求。可用下方搜索框按片名、关键词筛选，也可以点击题材标签缩小范围；结果会随输入即时更新。</p>
+      </div>
+
+      <div class="filter" role="search">
+        <label for="q">搜索片单</label>
+        <input id="q" type="search" placeholder="输入片名或关键词，例如：剧情、纪录片" autocomplete="off">
+        <div class="chips" id="chips" role="group" aria-label="题材筛选">
+          <button class="chip" type="button" data-genre="all" aria-pressed="true">全部</button>
+          <button class="chip" type="button" data-genre="剧情" aria-pressed="false">剧情</button>
+          <button class="chip" type="button" data-genre="剧集" aria-pressed="false">剧集</button>
+          <button class="chip" type="button" data-genre="纪录片" aria-pressed="false">纪录片</button>
+        </div>
+        <p class="filter-note" id="filterNote">当前显示全部片单，共 6 部。</p>
+      </div>
+
+      <div class="cards" id="cards">
+
+        <article class="card" data-genre="剧情" data-key="山海之间 剧情 家庭 公路">
+          <div class="poster" style="background:linear-gradient(140deg,#2f3b63,#151b2c);">
+            <svg viewBox="0 0 120 68" width="100%" height="100%" aria-hidden="true">
+              <path d="M0 58 L26 32 L46 48 L66 24 L90 50 L120 30 L120 68 L0 68 Z" fill="#3b4877" opacity=".9"/>
+              <path d="M0 62 L30 44 L58 56 L84 38 L120 56 L120 68 L0 68 Z" fill="#26304f"/>
+              <circle cx="94" cy="18" r="7" fill="#e8b24a"/>
+            </svg>
+            <span>剧情</span>
+          </div>
+          <div class="card-body">
+            <h3>山海之间</h3>
+            <div class="meta">剧情 / 家庭 · 公路叙事</div>
+            <p>一对父女沿东南海岸线自驾，途中逐步解开多年的家庭心结。适合喜欢慢节奏、人物对白自然、风景与情绪并重的观众。</p>
+            <div class="foot"><span>适看：安静夜晚</span><span>约 118 分钟</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-genre="剧情" data-key="长夜灯 剧情 悬疑 都市">
+          <div class="poster" style="background:linear-gradient(140deg,#3a2d2a,#1a1420);">
+            <svg viewBox="0 0 120 68" width="100%" height="100%" aria-hidden="true">
+              <rect x="0" y="0" width="120" height="68" fill="none"/>
+              <circle cx="60" cy="26" r="12" fill="none" stroke="#e8b24a" stroke-width="2"/>
+              <path d="M60 38v18M52 56h16M36 58h48" stroke="#8d6f3a" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 20c8-8 16-8 24 0M78 20c8-8 16-8 24 0" stroke="#4a3a52" stroke-width="2" fill="none"/>
+            </svg>
+            <span>剧情</span>
+          </div>
+          <div class="card-body">
+            <h3>长夜灯</h3>
+            <div class="meta">剧情 / 悬疑 · 都市群像</div>
+            <p>一盏常亮的街灯串起三组陌生人的夜晚，线索在对话中缓慢收拢。适合偏爱细节伏笔、愿意跟着人物一起推理的观众。</p>
+            <div class="foot"><span>适看：专注观看</span><span>约 106 分钟</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-genre="剧集" data-key="旧城春秋 剧集 年代 群像">
+          <div class="poster" style="background:linear-gradient(140deg,#33405f,#1b2136);">
+            <svg viewBox="0 0 120 68" width="100%" height="100%" aria-hidden="true">
+              <rect x="10" y="34" width="20" height="26" fill="#3a476f"/>
+              <rect x="36" y="24" width="24" height="36" fill="#455483"/>
+              <rect x="66" y="30" width="18" height="30" fill="#3a476f"/>
+              <rect x="90" y="20" width="20" height="40" fill="#455483"/>
+              <path d="M10 34h20M36 24h24M66 30h18M90 20h20" stroke="#e8b24a" stroke-width="2"/>
+            </svg>
+            <span>剧集</span>
+          </div>
+          <div class="card-body">
+            <h3>旧城春秋</h3>
+            <div class="meta">剧集 / 年代 · 长篇群像</div>
+            <p>以一条老街的十余年变迁为轴，讲述几户人家的起落。节奏偏稳，适合愿意按集追看、喜欢生活流叙事的观众。</p>
+            <div class="foot"><span>适看：多集连看</span><span>长篇连载</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-genre="剧集" data-key="第七码头 剧集 职场 轻喜剧">
+          <div class="poster" style="background:linear-gradient(140deg,#274a52,#14232b);">
+            <svg viewBox="0 0 120 68" width="100%" height="100%" aria-hidden="true">
+              <path d="M0 54h120" stroke="#4d7b84" stroke-width="2"/>
+              <path d="M20 54V34h26v20M46 54V26h22v28M68 54V38h24v16" fill="#2f5a63" stroke="#78a5ad" stroke-width="1.5"/>
+              <path d="M0 60c12-6 24-6 36 0s24 6 36 0 24-6 48 0" fill="none" stroke="#e8b24a" stroke-width="2"/>
+            </svg>
+            <span>剧集</span>
+          </div>
+          <div class="card-body">
+            <h3>第七码头</h3>
+            <div class="meta">剧集 / 职场 · 轻喜剧</div>
+            <p>一群码头调度员的日常，笑点来自工作细节而非夸张桥段。适合下班后想放松、又不想看太吵闹内容的观众。</p>
+            <div class="foot"><span>适看：碎片时间</span><span>单集约 45 分钟</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-genre="纪录片" data-key="河源手记 纪录片 自然 人文">
+          <div class="poster" style="background:linear-gradient(140deg,#2c4a3c,#16241d);">
+            <svg viewBox="0 0 120 68" width="100%" height="100%" aria-hidden="true">
+              <path d="M0 48 L24 30 L42 44 L62 22 L82 42 L104 28 L120 40 L120 68 L0 68 Z" fill="#356b52" opacity=".85"/>
+              <path d="M0 56 L28 42 L52 54 L78 40 L102 52 L120 44 L120 68 L0 68 Z" fill="#223f31"/>
+              <path d="M8 24c10-6 20-6 30 0M76 18c10-6 20-6 30 0" stroke="#8dbfa4" stroke-width="2" fill="none"/>
+            </svg>
+            <span>纪录片</span>
+          </div>
+          <div class="card-body">
+            <h3>河源手记</h3>
+            <div class="meta">纪录片 / 自然 · 人文观察</div>
+            <p>沿一条河流上溯，记录沿岸村镇的季节变化与日常生计。画面信息量大，适合喜欢自然影像与人文观察的观众。</p>
+            <div class="foot"><span>适看：大屏观看</span><span>约 92 分钟</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-genre="纪录片" data-key="手作的人 纪录片 工艺 人物">
+          <div class="poster" style="background:linear-gradient(140deg,#4a3a26,#241c12);">
+            <svg viewBox="0 0 120 68" width="100%" height="100%" aria-hidden="true">
+              <circle cx="60" cy="34" r="18" fill="none" stroke="#e8b24a" stroke-width="2"/>
+              <circle cx="60" cy="34" r="9" fill="none" stroke="#b98d3e" stroke-width="2"/>
+              <path d="M60 8v8M60 52v8M34 34h8M78 34h8" stroke="#c9a35d" stroke-width="2" stroke-linecap="round"/>
+              <path d="M20 62h80" stroke="#6b5636" stroke-width="2"/>
+            </svg>
+            <span>纪录片</span>
+          </div>
+          <div class="card-body">
+            <h3>手作的人</h3>
+            <div class="meta">纪录片 / 工艺 · 人物访谈</div>
+            <p>走访数位手工艺人，记录工具、材料与时间的配合。节奏舒缓，适合对手艺过程本身感兴趣、想看完整制作流程的观众。</p>
+            <div class="foot"><span>适看：慢速观看</span><span>约 84 分钟</span></div>
+          </div>
+        </article>
+
+        <p class="empty" id="empty" hidden>没有匹配的片单，试试更换关键词或点击“全部”。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">观影指南</span>
+        <h2>从打开到看完的四步</h2>
+        <p>天龙影院把选片拆成四个具体动作：先定场景，再看题材，然后核对时长，最后确认设备与字幕。按这个顺序，通常能减少反复翻找的时间。</p>
+      </div>
+      <div class="guide">
+        <div class="panel">
+          <h3>选片步骤</h3>
+          <ol class="steps">
+            <li><strong>确定场景。</strong>是独自专注观看，还是与家人一起？场景决定了题材与节奏的上限。</li>
+            <li><strong>圈定题材。</strong>用上方筛选按钮在剧情、剧集、纪录片之间收窄，避免一次浏览过多条目。</li>
+            <li><strong>核对时长。</strong>片单卡片底部标注了大致时长或集数，先确认时间是否够用。</li>
+            <li><strong>确认设备。</strong>纪录片与大场面剧情片更适合大屏，剧集则适合按集安排在碎片时间。</li>
+          </ol>
+        </div>
+        <div class="panel">
+          <h3>观看小提示</h3>
+          <ul class="tips">
+            <li>片单中的时长与集数为大致信息，用于安排时间，具体以实际播放为准。</li>
+            <li>悬疑类作品建议一次看完，避免中断后遗忘线索；群像剧集则适合每天固定一集。</li>
+            <li>纪录片信息密度高，观看前可先看简介与主题标签，判断是否与当前兴趣匹配。</li>
+            <li>与家人共看时，优先选择节奏平稳、对白清晰的作品，减少中途讨论打断。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">关于本站</span>
+        <h2>天龙影院在做什么</h2>
+        <p>这一页不追求收录数量，而是把有限的作品整理成可判断的条目：题材、看点、适看场景与时长，让选择本身变得简单。</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>天龙影院的内容组织围绕“选片”这一动作展开。每张卡片只保留对决策有用的信息：作品名称、题材标签、一段说明看点的短描述，以及大致时长。读者可以在几十秒内判断一部作品是否符合当下的观看需求。</p>
+          <p>片单目前覆盖剧情、剧集与纪录片三条主线。三者对应不同的观看习惯：剧情片多为一次看完的完整体验，剧集需要按集分配时间，纪录片则更看重主题与信息密度。天龙影院把这三类分开陈列，是为了避免不同节奏的内容混在一起，增加比较成本。</p>
+          <p>页面中的搜索与题材筛选在本地即时生效，不需要跳转。片段式说明与观影指南相互补充：前者回答“这部讲什么”，后者回答“什么时候看、怎么看”。后续片单会继续按同一结构补充，保持条目之间的可比性。</p>
+        </div>
+        <aside class="facts">
+          <h3>页面概要</h3>
+          <dl>
+            <dt>内容类型</dt><dd>影视浏览与片单推荐</dd>
+            <dt>当前片单</dt><dd>6 部，三题材</dd>
+            <dt>筛选方式</dt><dd>关键词 + 题材标签</dd>
+            <dt>更新方式</dt><dd>按同一结构持续补充</dd>
+            <dt>适用设备</dt><dd>桌面与手机自适应</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">常见问题</span>
+        <h2>访问前可能想知道的几件事</h2>
+        <p>以下问题来自访问天龙影院时最常见的关注点，回答只涉及本页面的内容结构与使用方式。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>天龙影院的片单是怎么分类的？</summary>
+          <p>目前按剧情、剧集、纪录片三类划分。剧情片可一次看完，剧集按集连载，纪录片侧重主题与信息密度。分类的目的是让不同观看节奏的内容分开呈现，便于比较与选择。</p>
+        </details>
+        <details>
+          <summary>搜索和题材筛选能同时使用吗？</summary>
+          <p>可以。搜索框按片名与关键词匹配，题材按钮单独收窄范围，两者叠加后即时显示结果。没有匹配项时会出现提示，点击“全部”即可恢复完整片单。</p>
+        </details>
+        <details>
+          <summary>卡片上的时长是精确信息吗？</summary>
+          <p>卡片中的时长与集数为大致参考，用于安排观看时间，具体以实际播放信息为准。片单说明中的看点描述同样属于归纳性介绍，不构成对作品细节的完整复述。</p>
+        </details>
+        <details>
+          <summary>后续会补充更多内容吗？</summary>
+          <p>会。新增条目沿用现有的卡片结构，包含题材标签、看点短描述与时长参考，保持条目之间的可比性。页面结构不会因条目增加而改变阅读顺序。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#1f2740"/>
+            <circle cx="32" cy="32" r="17" fill="none" stroke="#e8b24a" stroke-width="3"/>
+            <circle cx="32" cy="32" r="4" fill="#e8b24a"/>
+            <path d="M32 9v7M32 48v7M9 32h7M48 32h7" stroke="#e8b24a" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          天龙影院
+        </div>
+        <p>以片单组织方式的影视浏览页面，围绕题材、看点与观看场景整理内容，帮助访问者更快完成选片。</p>
+      </div>
+      <div>
+        <h4>页面导航</h4>
+        <ul>
+          <li><a href="#picks">精选片单</a></li>
+          <li><a href="#guide">观影指南</a></li>
+          <li><a href="#about">关于本站</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>片单题材</h4>
+        <ul>
+          <li><a href="#picks">剧情片</a></li>
+          <li><a href="#picks">长篇剧集</a></li>
+          <li><a href="#picks">人文纪录片</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>天龙影院 · 影视浏览与片单推荐页面</span>
+      <span>片单信息为归纳性介绍，具体以实际播放为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('q');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#cards .card'));
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#chips .chip'));
+  var note = document.getElementById('filterNote');
+  var empty = document.getElementById('empty');
+  var genre = 'all';
+
+  function apply(){
+    var kw = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(c){
+      var g = c.getAttribute('data-genre');
+      var key = (c.getAttribute('data-key') || '').toLowerCase();
+      var okG = (genre === 'all' || g === genre);
+      var okK = !kw || key.indexOf(kw) > -1;
+      var ok = okG && okK;
+      c.hidden = !ok;
+      if(ok) shown++;
+    });
+    empty.hidden = shown !== 0;
+    var gLabel = genre === 'all' ? '全部题材' : genre;
+    note.textContent = '当前显示「' + gLabel + '」片单，共 ' + shown + ' 部' + (kw ? '（关键词：' + input.value.trim() + '）' : '') + '。';
+  }
+
+  chips.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      genre = btn.getAttribute('data-genre');
+      chips.forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      apply();
+    });
+  });
+
+  input.addEventListener('input', apply);
+  apply();
+})();
+</script>
+</body>
+              </html>
