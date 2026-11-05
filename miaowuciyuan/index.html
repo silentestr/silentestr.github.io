@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>喵物次元-喵物次元二次元周边_喵物次元手办模型_谷子社区</title>
+<meta name="description" content="喵物次元是面向二次元爱好者的周边与手办模型主题首页，整理谷子收藏、手办模型选购、开箱展示与同好交流的实用内容，帮助访客快速找到喵物次元的周边资讯与社区入口。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b2140'/%3E%3Cpath d='M14 26 L20 12 L30 22 Z' fill='%23f7c1d9'/%3E%3Cpath d='M50 26 L44 12 L34 22 Z' fill='%23f7c1d9'/%3E%3Ccircle cx='32' cy='38' r='16' fill='%23f7c1d9'/%3E%3Ccircle cx='25' cy='36' r='2.6' fill='%232b2140'/%3E%3Ccircle cx='39' cy='36' r='2.6' fill='%232b2140'/%3E%3Cpath d='M29 44 q3 3 6 0' stroke='%232b2140' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#2b2140;
+    --ink-soft:#4b3f66;
+    --muted:#6f6585;
+    --pink:#f7c1d9;
+    --pink-deep:#e08ab4;
+    --mint:#bfe7dd;
+    --cream:#fdf8f4;
+    --paper:#ffffff;
+    --line:#e9e0ea;
+    --radius:18px;
+    --shadow:0 12px 30px rgba(43,33,64,.08);
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(253,248,244,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar{display:flex;align-items:center;gap:18px;min-height:68px;}
+  .logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .logo-mark{width:38px;height:38px;flex-shrink:0;}
+  .logo-text{font-size:19px;font-weight:800;letter-spacing:.06em;color:var(--ink);}
+  nav.main{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;}
+  nav.main a{
+    font-size:14px;padding:7px 13px;border-radius:999px;color:var(--ink-soft);
+    transition:background .2s,color .2s;
+  }
+  nav.main a:hover{background:var(--pink);color:var(--ink);}
+
+  /* hero */
+  .hero{
+    background:
+      radial-gradient(circle at 88% 12%, rgba(247,193,217,.55), transparent 46%),
+      radial-gradient(circle at 6% 88%, rgba(191,231,221,.6), transparent 50%),
+      var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:56px 0 60px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;}
+  .kicker{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:12.5px;letter-spacing:.14em;color:var(--pink-deep);
+    font-weight:700;margin-bottom:14px;
+  }
+  .kicker::before{content:"";width:22px;height:2px;background:var(--pink-deep);border-radius:2px;}
+  h1{
+    font-size:clamp(30px,4.6vw,46px);
+    line-height:1.22;margin:0 0 18px;font-weight:900;letter-spacing:.04em;
+  }
+  .hero p.lead{font-size:16px;color:var(--ink-soft);margin:0 0 26px;max-width:34em;}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 24px;border-radius:999px;font-size:14.5px;font-weight:700;
+    border:1.5px solid transparent;transition:transform .18s,box-shadow .18s,background .18s;
+  }
+  .btn-primary{background:var(--ink);color:#fff;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(43,33,64,.22);}
+  .btn-ghost{background:var(--paper);border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--pink-deep);transform:translateY(-2px);}
+  .btn[aria-disabled="true"]{opacity:.72;cursor:not-allowed;}
+  .hero-figure{position:relative;}
+  .hero-figure .card-art{
+    background:linear-gradient(160deg,#fff 0%,#fbebf2 100%);
+    border:1px solid var(--line);border-radius:26px;padding:22px;box-shadow:var(--shadow);
+  }
+  .hero-figure figcaption{
+    font-size:12.5px;color:var(--muted);margin-top:12px;text-align:center;letter-spacing:.04em;
+  }
+  .stat-row{display:flex;gap:26px;margin-top:26px;flex-wrap:wrap;}
+  .stat b{display:block;font-size:22px;font-weight:900;color:var(--ink);line-height:1.2;}
+  .stat span{font-size:12.5px;color:var(--muted);}
+
+  /* section base */
+  section{padding:64px 0;}
+  section.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .sec-head{margin-bottom:30px;max-width:44em;}
+  .sec-head h2{font-size:clamp(21px,2.8vw,27px);margin:0 0 10px;font-weight:800;letter-spacing:.03em;}
+  .sec-head p{margin:0;color:var(--ink-soft);font-size:15px;}
+
+  /* nav cards */
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;
+    transition:transform .2s,border-color .2s;
+  }
+  section.alt .card{background:var(--cream);}
+  .card:hover{transform:translateY(-4px);border-color:var(--pink-deep);}
+  .card .ico{width:34px;height:34px;}
+  .card h3{margin:0;font-size:17px;font-weight:800;}
+  .card p{margin:0;font-size:14px;color:var(--ink-soft);}
+  .card .more{margin-top:auto;font-size:13px;font-weight:700;color:var(--pink-deep);letter-spacing:.04em;}
+
+  /* guide list */
+  .guide{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .guide article{
+    border-left:3px solid var(--pink);padding:2px 0 2px 20px;
+  }
+  .guide h3{margin:0 0 8px;font-size:16.5px;font-weight:800;}
+  .guide p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+  .guide .tag{
+    display:inline-block;font-size:11.5px;letter-spacing:.1em;font-weight:700;
+    color:var(--mint-deep,#3f8c7d);background:#e6f5f1;border-radius:6px;padding:2px 8px;margin-bottom:8px;
+  }
+
+  /* flow */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step;}
+  .flow .step{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 20px;position:relative;
+  }
+  section.alt .flow .step{background:#fff;}
+  .flow .step::before{
+    counter-increment:step;content:"0" counter(step);
+    font-size:13px;font-weight:900;color:var(--pink-deep);letter-spacing:.1em;
+  }
+  .flow .step h3{margin:8px 0 6px;font-size:15.5px;font-weight:800;}
+  .flow .step p{margin:0;font-size:13.5px;color:var(--ink-soft);}
+
+  /* community */
+  .community{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:center;}
+  .quote{
+    background:linear-gradient(150deg,#fff,#fdf2f7);
+    border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow);
+  }
+  .quote p{font-size:15px;color:var(--ink-soft);margin:0 0 16px;}
+  .quote .who{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted);}
+  .avatar{
+    width:38px;height:38px;border-radius:50%;background:var(--mint);
+    display:grid;place-items:center;font-weight:900;color:var(--ink);flex-shrink:0;font-size:15px;
+  }
+  .topic-list{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+  .topic-list li{
+    display:flex;gap:12px;align-items:flex-start;
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:14px;
+  }
+  section.alt .topic-list li{background:var(--cream);}
+  .topic-list b{color:var(--pink-deep);font-weight:800;flex-shrink:0;}
+
+  /* download */
+  .download-band{
+    background:linear-gradient(120deg,var(--ink) 0%,#43325f 100%);
+    color:#fff;border-radius:26px;padding:40px 36px;
+    display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:space-between;
+  }
+  .download-band h2{margin:0 0 8px;font-size:23px;font-weight:900;letter-spacing:.03em;}
+  .download-band p{margin:0;font-size:14.5px;color:#dcd3ea;max-width:38em;}
+  .download-band .btn{
+    background:var(--pink);color:var(--ink);border-color:var(--pink);flex-shrink:0;
+  }
+  .download-band .btn:hover{transform:translateY(-2px);}
+  .download-band .btn[aria-disabled="true"]{pointer-events:none;opacity:.85;}
+
+  /* faq */
+  .faq{display:grid;gap:14px;}
+  .faq details{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 20px;
+  }
+  section.alt .faq details{background:var(--cream);}
+  .faq summary{
+    cursor:pointer;font-weight:800;font-size:15px;list-style:none;
+    display:flex;justify-content:space-between;gap:16px;align-items:center;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+";color:var(--pink-deep);font-size:19px;font-weight:900;line-height:1;}
+  .faq details[open] summary::after{content:"–";}
+  .faq details p{margin:12px 0 0;font-size:14.5px;color:var(--ink-soft);}
+
+  /* footer */
+  footer.site{
+    background:var(--ink);color:#cfc4e0;padding:44px 0 30px;font-size:13.5px;
+  }
+  .foot-top{display:flex;gap:32px;flex-wrap:wrap;justify-content:space-between;margin-bottom:26px;}
+  .foot-brand{max-width:30em;}
+  .foot-brand .logo-text{color:#fff;font-size:17px;}
+  .foot-brand p{margin:10px 0 0;color:#a89cc0;font-size:13px;line-height:1.8;}
+  .foot-links{display:flex;gap:44px;flex-wrap:wrap;}
+  .foot-links h4{margin:0 0 10px;font-size:13px;color:#fff;letter-spacing:.08em;font-weight:800;}
+  .foot-links a{display:block;color:#a89cc0;margin-bottom:7px;font-size:13px;transition:color .2s;}
+  .foot-links a:hover{color:var(--pink);}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.12);padding-top:18px;
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#8f83a8;font-size:12.5px;
+  }
+
+  /* search */
+  .search-box{display:flex;gap:8px;margin-top:22px;max-width:440px;}
+  .search-box input{
+    flex:1;min-width:0;padding:11px 16px;border-radius:999px;border:1px solid var(--line);
+    background:var(--paper);font-size:14px;color:var(--ink);font-family:inherit;outline:none;
+    transition:border-color .2s;
+  }
+  .search-box input:focus{border-color:var(--pink-deep);}
+  .search-box button{
+    padding:11px 20px;border-radius:999px;border:none;background:var(--pink-deep);
+    color:#fff;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;
+  }
+  .search-hint{font-size:12.5px;color:var(--muted);margin-top:10px;min-height:1.4em;}
+
+  @media (max-width:920px){
+    .hero-grid,.community,.guide{grid-template-columns:1fr;}
+    .cols{grid-template-columns:repeat(2,1fr);}
+    .flow{grid-template-columns:repeat(2,1fr);}
+    .hero-figure{order:-1;max-width:400px;}
+  }
+  @media (max-width:640px){
+    .bar{flex-wrap:wrap;padding:10px 0;min-height:0;}
+    nav.main{margin-left:0;order:3;width:100%;gap:2px;overflow-x:auto;padding-bottom:2px;}
+    nav.main a{font-size:13px;padding:6px 10px;white-space:nowrap;}
+    .hero{padding:34px 0 40px;}
+    section{padding:44px 0;}
+    .cols,.flow{grid-template-columns:1fr;}
+    .stat-row{gap:20px;}
+    .download-band{padding:28px 22px;gap:20px;}
+    .download-band h2{font-size:20px;}
+    .foot-links{gap:28px;}
+    body{line-height:1.8;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="喵物次元 首页">
+      <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+        <rect width="64" height="64" rx="15" fill="#2b2140"/>
+        <path d="M14 27 L20 12 L30 22 Z" fill="#f7c1d9"/>
+        <path d="M50 27 L44 12 L34 22 Z" fill="#f7c1d9"/>
+        <circle cx="32" cy="38" r="16" fill="#f7c1d9"/>
+        <circle cx="25" cy="36" r="2.6" fill="#2b2140"/>
+        <circle cx="39" cy="36" r="2.6" fill="#2b2140"/>
+        <path d="M29 44 q3 3 6 0" stroke="#2b2140" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">喵物次元</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#guide">周边指南</a>
+      <a href="#flow">收藏流程</a>
+      <a href="#community">同好社区</a>
+      <a href="#download">主题下载</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">二次元周边 · 谷子收藏</span>
+        <h1>喵物次元</h1>
+        <p class="lead">喵物次元是一个围绕二次元周边与手办模型的收藏主题首页。这里把谷子挑选、手办模型选购、开箱展示与同好交流整理成清晰的阅读路径，让刚入坑的新人和已有收藏习惯的老玩家，都能在喵物次元找到可以直接使用的信息。</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#guide">查看周边指南</a>
+          <a class="btn btn-ghost" href="#community">进入同好社区</a>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><b>4 类</b><span>周边收藏方向</span></div>
+          <div class="stat"><b>4 步</b><span>收藏入门流程</span></div>
+          <div class="stat"><b>5 问</b><span>常见问题答疑</span></div>
+        </div>
+        <form class="search-box" role="search" onsubmit="return false;">
+          <label for="siteSearch" class="sr-only" style="position:absolute;left:-9999px;">在喵物次元站内检索</label>
+          <input id="siteSearch" type="search" placeholder="检索：手办、徽章、亚克力立牌…" autocomplete="off">
+          <button type="button" id="searchBtn">检索</button>
+        </form>
+        <p class="search-hint" id="searchHint" aria-live="polite"></p>
+      </div>
+      <figure class="hero-figure" style="margin:0;">
+        <div class="card-art">
+          <svg viewBox="0 0 340 260" role="img" aria-label="喵物次元周边收藏展示插画">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f7c1d9"/><stop offset="1" stop-color="#bfe7dd"/>
+              </linearGradient>
+            </defs>
+            <rect x="18" y="30" width="140" height="180" rx="14" fill="#fff" stroke="#e9e0ea"/>
+            <rect x="34" y="48" width="108" height="90" rx="8" fill="url(#g1)"/>
+            <circle cx="88" cy="88" r="24" fill="#fff" opacity=".75"/>
+            <path d="M76 82 L82 68 L92 78 Z" fill="#e08ab4"/>
+            <path d="M100 82 L94 68 L84 78 Z" fill="#e08ab4"/>
+            <circle cx="88" cy="90" r="14" fill="#f7c1d9"/>
+            <rect x="34" y="150" width="76" height="8" rx="4" fill="#e9e0ea"/>
+            <rect x="34" y="166" width="52" height="8" rx="4" fill="#e9e0ea"/>
+            <rect x="182" y="52" width="140" height="158" rx="14" fill="#fff" stroke="#e9e0ea"/>
+            <path d="M206 96 L222 62 L246 92 Z" fill="#bfe7dd"/>
+            <circle cx="252" cy="130" r="34" fill="#f7c1d9"/>
+            <circle cx="240" cy="126" r="4" fill="#2b2140"/>
+            <circle cx="264" cy="126" r="4" fill="#2b2140"/>
+            <path d="M244 142 q8 7 16 0" stroke="#2b2140" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="204" y="176" width="96" height="8" rx="4" fill="#e9e0ea"/>
+            <circle cx="40" cy="238" r="6" fill="#f7c1d9"/>
+            <circle cx="60" cy="238" r="6" fill="#bfe7dd"/>
+            <circle cx="80" cy="238" r="6" fill="#e9e0ea"/>
+          </svg>
+        </div>
+        <figcaption>周边陈列与手办展示示意 · 喵物次元</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- 周边方向 -->
+  <section id="guide">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>喵物次元周边指南：从哪一类开始收藏</h2>
+        <p>二次元周边的品类差异很大，价格、保存方式与展示效果各不相同。先确定自己更看重哪一点，再决定第一件藏品，往往比跟风购买更省心。</p>
+      </div>
+      <div class="cols">
+        <article class="card">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true">
+            <rect x="4" y="8" width="32" height="24" rx="5" fill="#f7c1d9"/>
+            <circle cx="20" cy="20" r="7" fill="#fff"/>
+            <circle cx="20" cy="20" r="3" fill="#2b2140"/>
+          </svg>
+          <h3>徽章与吧唧</h3>
+          <p>单价低、体积小，适合新手先建立收藏习惯。需要注意针脚是否牢固、背面是否有防锈处理，日常收纳以干燥避光为宜。</p>
+          <span class="more">入门友好</span>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true">
+            <rect x="7" y="6" width="26" height="28" rx="4" fill="#bfe7dd"/>
+            <rect x="12" y="12" width="16" height="10" rx="2" fill="#fff"/>
+            <rect x="12" y="26" width="10" height="3" rx="1.5" fill="#2b2140" opacity=".35"/>
+          </svg>
+          <h3>亚克力立牌</h3>
+          <p>展示效果直观，适合桌面陈列。购买时留意厚度与印刷精度，放置时避免阳光直晒，可减少发黄与褪色的概率。</p>
+          <span class="more">展示优先</span>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="12" r="6" fill="#f7c1d9"/>
+            <path d="M10 34 q0 -12 10 -12 q10 0 10 12 Z" fill="#bfe7dd"/>
+          </svg>
+          <h3>手办模型</h3>
+          <p>预算与空间要求更高，但细节表现最完整。建议先确认比例尺寸与底座占用面积，再决定展示柜的位置与防尘方案。</p>
+          <span class="more">细节优先</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 选购要点 -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>选购前的四个实用判断</h2>
+        <p>喵物次元把常见的挑选顾虑归纳为四条，每条都对应一个可以当场核对的动作，而不是抽象的建议。</p>
+      </div>
+      <div class="guide">
+        <article>
+          <span class="tag">预算</span>
+          <h3>先定上限，再看清单</h3>
+          <p>把当月可用于周边的金额写成固定数字，再对照想买的清单排序。这样能避免在限定款与常规款之间反复摇摆，也能让收藏节奏更稳定。</p>
+        </article>
+        <article>
+          <span class="tag">版本</span>
+          <h3>确认是初版还是再版</h3>
+          <p>同款手办可能存在初版与再版的差别，包装标识、涂装细节与发售时间都可能不同。下单前核对商品标题与详情页的版本说明，可以少走一次弯路。</p>
+        </article>
+        <article>
+          <span class="tag">保存</span>
+          <h3>为藏品预留位置</h3>
+          <p>徽章、立牌与手办对湿度与光照的敏感程度不同。提前规划收纳盒、展示柜与防潮用品的空间，比买回来之后再临时找地方更可靠。</p>
+        </article>
+        <article>
+          <span class="tag">渠道</span>
+          <h3>优先选择可追溯来源</h3>
+          <p>无论是官方渠道还是同好转让，保留订单记录与沟通截图都是必要的。来源清晰，后续遇到瑕疵或运输问题时处理起来也更顺畅。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 流程 -->
+  <section id="flow">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>喵物次元收藏入门流程</h2>
+        <p>从零开始建立收藏并不复杂，按下面四步推进，能把选择、预算与收纳一次性理顺。</p>
+      </div>
+      <div class="flow">
+        <div class="step">
+          <h3>确定方向</h3>
+          <p>先选定一个品类作为起点，例如徽章或立牌，集中了解该品类的常见规格与价格区间。</p>
+        </div>
+        <div class="step">
+          <h3>列出清单</h3>
+          <p>把想收藏的角色与款式写成清单，标注优先级，避免在浏览中临时增加超出预算的项目。</p>
+        </div>
+        <div class="step">
+          <h3>核对信息</h3>
+          <p>确认版本、尺寸、材质与发货时间，把关键信息记录在同一个地方，方便后续比对。</p>
+        </div>
+        <div class="step">
+          <h3>收纳展示</h3>
+          <p>到手后及时检查外观，按材质分类存放，并为展示区留出通风与避光的位置。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 社区 -->
+  <section class="alt" id="community">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>同好社区：把收藏经验讲清楚</h2>
+        <p>喵物次元鼓励用具体的细节交流，而不是只贴图。清晰的描述能让后来者少踩坑，也更容易得到有效回应。</p>
+      </div>
+      <div class="community">
+        <div class="quote">
+          <p>“我把每一枚徽章的购入时间、渠道和收纳位置都记在一张表里，换收纳盒的时候直接照着表走，不用一件件翻找。这个方法在喵物次元分享后，不少同好也开始整理自己的清单。”</p>
+          <div class="who">
+            <span class="avatar" aria-hidden="true">喵</span>
+            <span>来自社区成员的整理经验分享</span>
+          </div>
+        </div>
+        <ul class="topic-list">
+          <li><b>开箱</b><span>记录包装状态、配件数量与第一眼观感，为同款提供参考。</span></li>
+          <li><b>收纳</b><span>分享收纳盒型号、分层方式与防潮用品的实际使用感受。</span></li>
+          <li><b>展示</b><span>交流展示柜灯光、层板高度与防尘方案，兼顾观感与保护。</span></li>
+          <li><b>交换</b><span>说明品相、版本与瑕疵位置，让转让信息更透明。</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 下载 -->
+  <section id="download">
+    <div class="wrap">
+      <div class="download-band">
+        <div>
+          <h2>喵物次元主题下载</h2>
+          <p>收藏清单与展示规划模板正在整理中。下载入口将在内容核对完成后开放，届时可在本页获取喵物次元的主题资源。</p>
+        </div>
+        <a class="btn" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="alt" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>常见问题</h2>
+        <p>关于喵物次元的内容范围与使用方式，这里先回答最常被问到的几个问题。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>喵物次元主要提供什么内容？</summary>
+          <p>喵物次元围绕二次元周边与手办模型展开，内容分为周边品类指南、选购判断、收藏流程与同好社区四个部分，帮助访客按顺序了解收藏这件事。</p>
+        </details>
+        <details>
+          <summary>新手应该先收藏哪一类周边？</summary>
+          <p>预算有限时，徽章与吧唧的单价更低、占用空间更小，适合先建立收藏习惯；如果更看重展示效果，可以从亚克力立牌开始。手办模型预算与空间要求更高，建议在明确偏好后再入手。</p>
+        </details>
+        <details>
+          <summary>如何判断手办模型的版本差异？</summary>
+          <p>主要看商品标题与详情页中的版本说明、发售时间与包装标识。不同版本在涂装细节与配件上可能存在差别，下单前逐项核对是最直接的方式。</p>
+        </details>
+        <details>
+          <summary>周边日常收纳要注意什么？</summary>
+          <p>核心是避光、防潮与防尘。徽章注意背面防锈，立牌避免长时间阳光直射，手办则建议放在有防尘结构的展示柜中，减少灰尘积累与意外碰撞。</p>
+        </details>
+        <details>
+          <summary>主题资源什么时候可以下载？</summary>
+          <p>喵物次元的收藏清单与展示规划模板仍在整理与核对中，下载按钮会在资源确认后启用，具体时间以本页更新为准。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="logo-text">喵物次元</span>
+        <p>喵物次元是面向二次元爱好者的周边与手办模型主题首页，整理谷子收藏、选购判断、收纳展示与同好交流的实用内容，让每一次收藏都有据可依。</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>内容</h4>
+          <a href="#guide">周边指南</a>
+          <a href="#flow">收藏流程</a>
+          <a href="#community">同好社区</a>
+        </div>
+        <div>
+          <h4>支持</h4>
+          <a href="#faq">常见问题</a>
+          <a href="#download">主题下载</a>
+          <a href="#top">返回顶部</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 喵物次元 · 二次元周边与手办模型主题首页</span>
+      <span>内容以实际更新为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var input = document.getElementById('siteSearch');
+    var btn = document.getElementById('searchBtn');
+    var hint = document.getElementById('searchHint');
+    var map = [
+      {k:['手办','模型','比例'], id:'guide', name:'周边指南 · 手办模型'},
+      {k:['徽章','吧唧','谷子'], id:'guide', name:'周边指南 · 徽章与吧唧'},
+      {k:['立牌','亚克力','展示'], id:'guide', name:'周边指南 · 亚克力立牌'},
+      {k:['流程','入门','新手'], id:'flow', name:'收藏入门流程'},
+      {k:['社区','同好','交流','交换'], id:'community', name:'同好社区'},
+      {k:['下载','模板','清单'], id:'download', name:'主题下载'},
+      {k:['问题','版本','收纳','预算'], id:'faq', name:'常见问题'}
+    ];
+    function run(){
+      var q = (input.value || '').trim();
+      if(!q){ hint.textContent = '请输入关键词，例如“手办”“收纳”“流程”。'; return; }
+      var hit = null;
+      for(var i=0;i<map.length;i++){
+        for(var j=0;j<map[i].k.length;j++){
+          if(q.indexOf(map[i].k[j]) > -1){ hit = map[i]; break; }
+        }
+        if(hit) break;
+      }
+      if(hit){
+        hint.textContent = '已定位到「' + hit.name + '」，页面正在跳转。';
+        document.getElementById(hit.id).scrollIntoView({behavior:'smooth', block:'start'});
+      } else {
+        hint.textContent = '未找到匹配栏目，可尝试“手办”“立牌”“社区”“下载”等词。';
+      }
+    }
+    btn.addEventListener('click', run);
+    input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); run(); } });
+  })();
+</script>
+
+</body>
+</html>
