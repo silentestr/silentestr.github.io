@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哗咪动漫-在线动漫观看_新番追更与动漫分类推荐</title>
+<meta name="description" content="哗咪动漫是动漫观看与追更入口，提供新番更新、动漫分类浏览、追番列表与播放指引，帮助观众快速找到想看的内容并持续追更。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b1b2f'/%3E%3Ccircle cx='24' cy='26' r='6' fill='%23ffb3c7'/%3E%3Ccircle cx='44' cy='26' r='6' fill='%23ffb3c7'/%3E%3Cpath d='M20 42c6 6 18 6 24 0' stroke='%237ee0d0' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1b1b2f;
+  --ink-soft:#3a3a55;
+  --muted:#6b6b85;
+  --pink:#ff7aa2;
+  --pink-soft:#ffe3ec;
+  --mint:#37c9b4;
+  --mint-soft:#e2f7f3;
+  --paper:#fdf9fb;
+  --card:#ffffff;
+  --line:#ece6ee;
+  --radius:16px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--paper);
+  color:var(--ink-soft);
+  line-height:1.75;
+  font-size:16px;
+}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3{color:var(--ink);line-height:1.35;margin:0;}
+img,svg{display:block;max-width:100%;}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px;}
+
+/* header */
+.site-head{
+  position:sticky;top:0;z-index:20;
+  background:rgba(253,249,251,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);font-size:19px;letter-spacing:.5px;}
+.logo-mark{width:36px;height:36px;flex:none;}
+.nav{display:flex;gap:6px;flex-wrap:wrap;}
+.nav a{
+  font-size:14.5px;padding:7px 12px;border-radius:999px;color:var(--ink-soft);
+  transition:background .2s,color .2s;
+}
+.nav a:hover,.nav a:focus-visible{background:var(--pink-soft);color:#c23a67;outline:none;}
+
+/* hero */
+.hero{
+  padding:52px 0 44px;
+  background:
+    radial-gradient(circle at 88% 12%, var(--mint-soft) 0%, transparent 42%),
+    radial-gradient(circle at 8% 88%, var(--pink-soft) 0%, transparent 46%);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;}
+.eyebrow{
+  display:inline-block;font-size:13px;font-weight:700;letter-spacing:1.5px;
+  color:#c23a67;background:var(--pink-soft);padding:5px 13px;border-radius:999px;margin-bottom:16px;
+}
+h1{font-size:clamp(30px,4.6vw,46px);font-weight:900;letter-spacing:1px;}
+.hero p{margin:16px 0 0;font-size:16.5px;max-width:34em;color:var(--ink-soft);}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:999px;font-weight:700;font-size:15px;
+  border:1.5px solid transparent;transition:transform .18s,box-shadow .18s,background .18s;
+}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:0 8px 20px rgba(27,27,47,.18);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(27,27,47,.24);}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line);}
+.btn-ghost:hover{border-color:var(--pink);color:#c23a67;transform:translateY(-2px);}
+.btn[aria-disabled="true"]{background:#e8e4ec;color:#8a86a0;box-shadow:none;border-color:#e8e4ec;pointer-events:none;cursor:default;}
+.hero-art{justify-self:center;width:100%;max-width:340px;}
+
+/* section base */
+section{padding:46px 0;}
+.sec-head{margin-bottom:26px;}
+.sec-head h2{font-size:clamp(21px,2.6vw,27px);font-weight:800;letter-spacing:.5px;}
+.sec-head p{margin:8px 0 0;color:var(--muted);font-size:15px;max-width:46em;}
+
+/* cards */
+.grid{display:grid;gap:18px;}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(27,27,47,.08);border-color:#f3d9e4;}
+.card h3{font-size:17px;font-weight:800;margin-bottom:8px;}
+.card p{margin:0;font-size:14.8px;color:var(--muted);line-height:1.7;}
+.card .tag{
+  display:inline-block;font-size:12px;font-weight:700;color:#1a8f7e;
+  background:var(--mint-soft);padding:3px 10px;border-radius:999px;margin-bottom:12px;
+}
+.card .tag.pink{color:#c23a67;background:var(--pink-soft);}
+
+/* feature list */
+.feature-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.feature{
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-align:left;
+}
+.feature svg{width:26px;height:26px;margin-bottom:10px;}
+.feature strong{display:block;font-size:15px;color:var(--ink);margin-bottom:4px;}
+.feature span{font-size:13.5px;color:var(--muted);line-height:1.6;display:block;}
+
+/* schedule */
+.schedule{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.day{
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;
+}
+.day h3{font-size:14.5px;font-weight:800;color:#c23a67;margin-bottom:10px;letter-spacing:1px;}
+.day ul{list-style:none;margin:0;padding:0;}
+.day li{
+  font-size:14px;color:var(--ink-soft);padding:6px 0;border-bottom:1px dashed var(--line);
+  display:flex;justify-content:space-between;gap:8px;
+}
+.day li:last-child{border-bottom:0;}
+.day li em{font-style:normal;color:var(--muted);font-size:13px;flex:none;}
+
+/* guide */
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start;}
+.steps{list-style:none;margin:0;padding:0;counter-reset:step;}
+.steps li{
+  position:relative;padding:0 0 20px 46px;counter-increment:step;
+}
+.steps li::before{
+  content:counter(step);
+  position:absolute;left:0;top:0;
+  width:30px;height:30px;border-radius:50%;
+  background:var(--ink);color:#fff;font-size:14px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.steps li:last-child{padding-bottom:0;}
+.steps strong{display:block;color:var(--ink);font-size:15.5px;margin-bottom:2px;}
+.steps span{font-size:14.5px;color:var(--muted);}
+.note{
+  background:var(--mint-soft);border-radius:var(--radius);padding:22px;border:1px solid #cdeee8;
+}
+.note h3{font-size:16px;margin-bottom:8px;color:#12796b;}
+.note p{margin:0 0 10px;font-size:14.5px;color:#2c6b62;line-height:1.75;}
+.note p:last-child{margin-bottom:0;}
+
+/* faq */
+.faq{display:grid;gap:12px;}
+details{
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;
+}
+details[open]{border-color:#f3d9e4;}
+summary{
+  cursor:pointer;font-weight:700;color:var(--ink);font-size:15px;list-style:none;
+}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:"+";float:right;color:var(--pink);font-weight:800;}
+details[open] summary::after{content:"−";}
+details p{margin:10px 0 0;font-size:14.6px;color:var(--muted);}
+
+/* footer */
+.site-foot{
+  background:var(--ink);color:#b9b8cc;margin-top:20px;padding:34px 0 26px;font-size:14px;
+}
+.foot-inner{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:flex-start;}
+.foot-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:16px;}
+.foot-brand svg{width:30px;height:30px;}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap;}
+.foot-links a:hover{color:#fff;}
+.foot-note{width:100%;border-top:1px solid #32324a;padding-top:16px;margin-top:4px;color:#8e8da8;font-size:13px;}
+
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-art{order:-1;max-width:200px;}
+  .grid-3,.grid-2,.feature-row,.schedule,.guide{grid-template-columns:1fr;}
+  .feature-row{grid-template-columns:1fr 1fr;}
+  .nav{gap:2px;}
+  .nav a{padding:6px 9px;font-size:13.5px;}
+  .head-inner{flex-wrap:wrap;}
+  section{padding:36px 0;}
+  .hero{padding:34px 0 30px;}
+}
+@media (max-width:480px){
+  .feature-row{grid-template-columns:1fr;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="logo" href="#top" aria-label="哗咪动漫首页">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1b1b2f"/>
+        <circle cx="24" cy="26" r="6" fill="#ffb3c7"/>
+        <circle cx="44" cy="26" r="6" fill="#ffb3c7"/>
+        <path d="M20 42c6 6 18 6 24 0" stroke="#7ee0d0" stroke-width="4" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>哗咪动漫</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#new">新番更新</a>
+      <a href="#category">动漫分类</a>
+      <a href="#schedule">追更日程</a>
+      <a href="#guide">观看指引</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">动漫观看 · 追更入口</span>
+        <h1>哗咪动漫</h1>
+        <p>哗咪动漫把“找番”和“追番”放在同一条路径上：先按分类或新番列表确认想看的内容，再通过作品条目了解更新节奏，最后用追番记录把进度接起来。页面不堆砌内容，而是让第一次到访的观众三步之内进入正片，让长期追更的观众一眼看到本周变化。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#new">查看新番更新</a>
+          <a class="btn btn-ghost" href="#category">按分类找番</a>
+          <a class="btn" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+        </div>
+      </div>
+      <svg class="hero-art" viewBox="0 0 320 320" role="img" aria-label="动漫播放界面示意图">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffe3ec"/>
+            <stop offset="1" stop-color="#e2f7f3"/>
+          </linearGradient>
+        </defs>
+        <circle cx="160" cy="160" r="150" fill="url(#g1)"/>
+        <rect x="52" y="88" width="216" height="132" rx="16" fill="#1b1b2f"/>
+        <rect x="68" y="104" width="184" height="100" rx="10" fill="#2b2b46"/>
+        <circle cx="120" cy="140" r="13" fill="#ffb3c7"/>
+        <circle cx="200" cy="140" r="13" fill="#ffb3c7"/>
+        <path d="M112 176c14 12 82 12 96 0" stroke="#7ee0d0" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M150 232h20l10 26h-40z" fill="#1b1b2f"/>
+        <rect x="120" y="258" width="80" height="10" rx="5" fill="#1b1b2f"/>
+        <circle cx="252" cy="72" r="16" fill="#ff7aa2"/>
+        <path d="M247 64l12 8-12 8z" fill="#fff"/>
+      </svg>
+    </div>
+  </section>
+
+  <section id="new">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>新番更新与本周看点</h2>
+        <p>更新区按“可看内容优先”排列，标题、集数状态与所属分类一并给出，避免点进条目后才发现尚未开播。哗咪动漫的更新信息以作品条目页为准，列表仅作为快速筛选的入口。</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <span class="tag">更新中</span>
+          <h3>连载新番</h3>
+          <p>当季连载作品按周更新，条目页标注当前集数与下一集时间。适合已经确定追更目标、只想确认进度的观众。</p>
+        </article>
+        <article class="card">
+          <span class="tag">已完结</span>
+          <h3>补番合集</h3>
+          <p>已完结作品可一次性看完整季，适合不想等待更新的观众。分类页提供按年份与类型的二次筛选。</p>
+        </article>
+        <article class="card">
+          <span class="tag pink">编辑推荐</span>
+          <h3>本周精选</h3>
+          <p>从近期讨论度较高的作品中挑出几部做简短说明，讲清楚题材、篇幅与看点，帮助观众判断是否合口味。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="category">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>动漫分类与找番方式</h2>
+        <p>分类是哗咪动漫最主要的找番手段。先定题材，再按篇幅和更新状态收窄范围，比在长列表里反复翻页更省时间。</p>
+      </div>
+      <div class="feature-row">
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff7aa2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg>
+          <strong>按题材</strong>
+          <span>热血、日常、悬疑、科幻、恋爱等常见题材分类，题材页内再列代表作品。</span>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#37c9b4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+          <strong>按更新状态</strong>
+          <span>连载中、已完结、未开播三种状态分开呈现，减少无效点击。</span>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff7aa2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5M4 19h16"/><path d="M8 15l4-5 3 3 4-6"/></svg>
+          <strong>按篇幅</strong>
+          <span>短篇、季番、长篇分开标注，方便安排连续观看的时间。</span>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#37c9b4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"/></svg>
+          <strong>按口碑</strong>
+          <span>参考观众讨论热度与编辑说明，作为题材之外的补充判断依据。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>追更日程示例</h2>
+        <p>下表说明日程区的组织方式：按周排布、标注集数区间与状态，让追更多部作品的观众提前知道哪天有新内容。实际时间以各作品条目页的更新标注为准。</p>
+      </div>
+      <div class="schedule">
+        <div class="day">
+          <h3>周一 · 周三</h3>
+          <ul>
+            <li><span>连载作品 A</span><em>第 8 集</em></li>
+            <li><span>连载作品 B</span><em>第 3 集</em></li>
+            <li><span>短篇作品 C</span><em>已完结</em></li>
+          </ul>
+        </div>
+        <div class="day">
+          <h3>周四 · 周五</h3>
+          <ul>
+            <li><span>连载作品 D</span><em>第 12 集</em></li>
+            <li><span>连载作品 E</span><em>第 5 集</em></li>
+            <li><span>新番作品 F</span><em>待开播</em></li>
+          </ul>
+        </div>
+        <div class="day">
+          <h3>周末</h3>
+          <ul>
+            <li><span>连载作品 G</span><em>第 20 集</em></li>
+            <li><span>合集作品 H</span><em>全 12 集</em></li>
+            <li><span>连载作品 I</span><em>第 2 集</em></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>观看指引：从找番到追更</h2>
+        <p>哗咪动漫的使用路径可以归纳为四步。按顺序走一遍，之后每次到访只需确认更新，不必重新筛选。</p>
+      </div>
+      <div class="guide">
+        <ol class="steps">
+          <li><strong>确定题材或作品名</strong><span>从分类页进入，或直接使用站内搜索定位具体作品。</span></li>
+          <li><strong>查看条目信息</strong><span>在作品条目页确认集数、更新状态与简介，判断是否符合预期。</span></li>
+          <li><strong>加入追番</strong><span>把想继续看的作品记进追番列表，避免下次重复查找。</span></li>
+          <li><strong>按日程回访</strong><span>对照追更日程查看本周更新，直接进入对应集数。</span></li>
+        </ol>
+        <div class="note">
+          <h3>观看体验说明</h3>
+          <p>播放页以清晰度与加载稳定为优先，减少与观看无关的干扰元素；移动端优先保证竖屏下的操作区域可点。</p>
+          <p>若遇到无法播放或字幕缺失，可先在条目页确认集数是否已上线，再检查网络与浏览器版本。页面上的更新状态与播放可用性并不总是同步，条目页说明优先。</p>
+          <p>追番列表只保存在当前使用环境中，更换设备后需要重新添加，这一点在初次使用时值得留意。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>常见问题</h2>
+        <p>以下问题集中在找番、追更与播放三个环节，回答以页面现有功能为范围。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>哗咪动漫主要提供什么？</summary>
+          <p>提供动漫作品的分类浏览、条目信息、新番更新与追番记录，核心是把找番与追更串成一条路径。</p>
+        </details>
+        <details>
+          <summary>更新时间和列表显示不一致怎么办？</summary>
+          <p>以作品条目页标注的更新信息为准。列表用于快速浏览，条目页承载更完整的集数与状态说明。</p>
+        </details>
+        <details>
+          <summary>追番列表会跨设备同步吗？</summary>
+          <p>当前追番记录保存在本地使用环境，不承诺跨设备同步，更换设备后需要重新添加。</p>
+        </details>
+        <details>
+          <summary>找不到某部作品怎么办？</summary>
+          <p>先尝试用作品全名搜索，再按题材分类逐层收窄；若仍未收录，说明该作品暂未进入当前内容范围。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#2b2b46"/>
+          <circle cx="24" cy="26" r="6" fill="#ffb3c7"/>
+          <circle cx="44" cy="26" r="6" fill="#ffb3c7"/>
+          <path d="M20 42c6 6 18 6 24 0" stroke="#7ee0d0" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span>哗咪动漫</span>
+      </div>
+      <div class="foot-links">
+        <a href="#new">新番更新</a>
+        <a href="#category">动漫分类</a>
+        <a href="#schedule">追更日程</a>
+        <a href="#guide">观看指引</a>
+        <a href="#faq">常见问题</a>
+      </div>
+      <p class="foot-note">哗咪动漫 · 动漫观看与追更入口。页面内容以找番、追更与播放指引为主，作品信息以条目页为准。</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
